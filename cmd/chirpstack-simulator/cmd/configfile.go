@@ -86,66 +86,64 @@ log_level={{ .General.LogLevel }}
 
 
 # Simulator configuration.
+  [[simulator]]
+  
+# Service-profile ID.
 #
-# Example:
-# [[simulator]]
+# It is recommended to create a new organization with a new service-profile
+# in the ChirpStack Application Server.
+  service_profile_id="PUT_YOUR_SERVICE_PROFILE_ID_HERE"
+  
+# Duration.
 #
-# # Service-profile ID.
-# #
-# # It is recommended to create a new organization with a new service-profile
-# # in the ChirpStack Application Server.
-# service_profile_id="1f32476e-a112-4f00-bcc7-4aab4bfefa1d"
+# This defines the duration of the simulation. If set to '0s', the simulation
+# will run until terminated.
+  duration="5m"
+  
+# Activation time.
 #
-# # Duration.
-# #
-# # This defines the duration of the simulation. If set to '0s', the simulation
-# # will run until terminated. This includes the activation time.
-# duration="5m"
-#
-# # Activation time.
-# #
-# # This is the time that the simulator takes to activate the devices. This
-# # value must be less than the simulator duration.
-# activation_time="1m"
-#
-#   # Device configuration.
-#   [simulator.device]
-#
-#   # Number of devices to simulate.
-#   count=1000
-#
-#   # Uplink interval.
-#   uplink_interval="5m"
-#
-#   # FPort.
-#   f_port=10
-#
-#   # Payload (HEX encoded).
-#   payload="010203"
-#
-#   # Frequency (Hz).
-#   frequency=868100000
-#
-#   # Bandwidth (Hz).
-#   bandwidth=125000
-#
-#   # Spreading-factor.
-#   spreading_factor=7
-#
-#   # Gateway configuration.
-#   [simulator.gateway]
-#
-#   # Event topic template.
-#   event_topic_template="{{ "gateway/{{ .GatewayID }}/event/{{ .Event }}" }}"
-#
-#   # Command topic template.
-#   command_topic_template="{{ "gateway/{{ .GatewayID }}/command/{{ .Command }}" }}"
-#
-#   # Min number of receiving gateways.
-#   min_count=3
-#
-#   # Max number of receiving gateways.
-#   max_count=5
+# This is the time that the simulator takes to activate the devices. This
+# value must be less than the simulator duration.
+  activation_time="1m"
+
+  # Device configuration.
+  [simulator.device]
+
+  # Number of devices to simulate.
+  count=1000
+
+  # Uplink interval.
+  uplink_interval="5m"
+
+  # FPort.
+  f_port=10
+
+  # Payload (HEX encoded).
+  payload="010203"
+
+  # Frequency (Hz).
+  frequency=868100000
+
+  # Bandwidth (Hz).
+  bandwidth=125000
+
+  # Spreading-factor.
+  spreading_factor=7
+
+  # Gateway configuration.
+  [simulator.gateway]
+
+  # Event topic template.
+  event_topic_template="{{ "gateway/{{ .GatewayID }}/event/{{ .Event }}" }}"
+
+  # Command topic template.
+  command_topic_template="{{ "gateway/{{ .GatewayID }}/command/{{ .Command }}" }}"
+
+  # Min number of receiving gateways.
+  min_count=3
+
+  # Max number of receiving gateways.
+  max_count=5
 {{ range $index, $element := .Simulator }}
 [[simulator]]
 service_profile_id="{{ $element.ServiceProfileID }}"
